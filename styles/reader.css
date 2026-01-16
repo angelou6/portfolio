@@ -1,0 +1,25 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: white;
+    overflow: hidden;
+    background-color: black;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#file {
+    width: 80%;
+    height: 70%;
+    overflow: scroll;
+    padding: 2em;
+    border: 2px solid grey;
+    border-radius: 15px;
+}

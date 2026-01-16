@@ -1,0 +1,115 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: white;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+}
+
+.selector h1 {
+    font-size: 2em;
+}
+
+.selector {
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.selector ul {
+    list-style-type: none;
+}
+
+.selector a, .selector li {
+    font-size: large;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 100ms ease-in-out;
+}
+
+.selector a:hover, .selector li:hover {
+    transform: scale(1.5, 1.5);
+}
+
+.selector a {
+    color: white;
+}
+
+.posts {
+    position: absolute;
+    width: 90vw;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    height: 60%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-direction: column;
+    border: 2px solid grey;
+    border-radius: 15px;
+}
+
+.posts a {
+    padding: 10px;
+    margin-bottom: 10px;
+    color: white;
+    border: 2px solid grey;
+    border-radius: 15px;
+    transition: all 130ms ease-in;
+}
+
+.posts a:hover {
+    background-color: grey;
+    color: black;
+}
+
+.posts a:link, .selector a:link {
+    text-decoration: none;
+}
+
+.posts a:visited, .selector a:visited {
+    text-decoration: none;
+}
+
+.posts a:hover {
+    text-decoration: none;
+}
+
+.posts a:active .selector a:active{
+    text-decoration: none;
+}
+
+.goback {
+    cursor: pointer;
+    color: white;
+    border: none;
+    padding-bottom: 2ex;
+    font-weight: bold;
+    width: 10%;
+    background-color: transparent;
+    transition: all 100ms ease-in-out;
+}
+
+.goback:hover {
+    transform: scale(1.5, 1.5);
+}
+
+.side-left {
+    transform: translateX(-100vw);
+}
+
+.side-right {
+    transform: translateX(100vw);
+}
+
+.down {
+    transform: translateY(100vh);
+}
