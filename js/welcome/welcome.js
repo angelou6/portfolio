@@ -21,8 +21,8 @@ const blogsMovement = new MoveElement(blogs)
 const projectsMovement = new MoveElement(projects);
 
 (async () => {
-    await populate(blogs, "https://api.github.com/repos/angelou6/website/contents/blog")
-    await populate(projects, "https://api.github.com/repos/angelou6/website/contents/projects")
+    await populate(blogs, "https://api.github.com/repos/angelou6/portfolio/contents/blog")
+    await populate(projects, "https://api.github.com/repos/angelou6/portfolio/contents/projects")
 })();
 
 for (const back of goBackButton) {

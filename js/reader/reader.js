@@ -8,7 +8,7 @@ if (content === null) window.location.replace("./")
 
 async function gethtml() {
     const res = await fetch(
-        `https://api.github.com/repos/angelou6/website/contents/${content}?ref=main`,
+        `https://api.github.com/repos/angelou6/portfolio/contents/${content}?ref=main`,
         {
             headers: {
                 "Accept": "application/vnd.github.html+json"
