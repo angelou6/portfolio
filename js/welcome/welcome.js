@@ -1,15 +1,12 @@
 import MoveElement from "../moveElement.js";
-import { populate, clickHandle } from "./populateData.js";
+import { populate } from "./populateData.js";
+import { clickHandle, goBackSamePage, openWithAnimation } from "../utils.js";
 
 const selector = document.querySelector(".selector")
 const links = document.querySelectorAll(".selector a")
 
 const blogs = document.getElementById("blog");
 const projects = document.getElementById("projects");
-
-selector.style.transform = ""
-blogs.style.transform = ""
-projects.style.transform = ""
 
 const blogButton = document.getElementById("blogsButton");
 const projectsButton = document.getElementById("projectsButton");
@@ -27,29 +24,18 @@ const projectsMovement = new MoveElement(projects);
 
 for (const back of goBackButton) {
     const parent = back.parentElement
-    if (parent.id === "blog")
-        back.onclick = () => goBack(blogsMovement, "blog")
-    else
-        back.onclick = () => goBack(projectsMovement, "projects")
+    back.onclick = () => goBackSamePage(
+        parent.id === "blog" ? blogsMovement : projectsMovement,
+        selectorMovement
+    )
 }
 
 for (const link of links) {
     link.onclick = (e) => clickHandle(e, selectorMovement);
 }
 
-async function goBack(movement) {
-    await movement.resetPosition(500)
-    selectorMovement.moveCenter()
-}
-
-async function openWithAnimation(movement) {
-    await selectorMovement.moveLeft(500)
-    movement.moveCenter()
-}
-
-blogButton.onclick = () => openWithAnimation(blogsMovement)
-projectsButton.onclick = () => openWithAnimation(projectsMovement)
-
+blogButton.onclick = () => openWithAnimation(blogsMovement, selectorMovement)
+projectsButton.onclick = () => openWithAnimation(projectsMovement, selectorMovement)
 
 document.addEventListener("DOMContentLoaded", () => selectorMovement.moveCenter())
 window.addEventListener("pageshow", (event) => {

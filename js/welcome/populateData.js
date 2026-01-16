@@ -1,4 +1,4 @@
-import MoveElement from "../moveElement.js";
+import { clickHandle } from "../utils.js";
 
 
 async function fetchData(url) {
@@ -15,27 +15,4 @@ export async function populate(element, url) {
         link.onclick = clickHandle
         element.appendChild(link)
     }
-}
-
-export async function clickHandle(e, movement = undefined, direction = "down") {
-    e.preventDefault()
-    const moveSpeed = 450
-    let animationTarget
-
-    if (movement === undefined) {
-        animationTarget = new MoveElement(e.target.parentElement);
-    } else {
-        animationTarget = movement
-    }
-
-    if (direction === "down")
-        await animationTarget.moveDown(moveSpeed)
-    else if (direction === "up")
-        await animationTarget.moveUp(moveSpeed)
-    else if (direction === "left")
-        await animationTarget.moveLeft(moveSpeed)
-    else if (direction === "right")
-        await animationTarget.moveRight(moveSpeed)
-
-    window.location.assign(e.target.href)
 }

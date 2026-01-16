@@ -1,43 +1,25 @@
 import MoveElement from "../moveElement.js";
+import { goBack, gethtml } from "../utils.js";
 
 const params = new URLSearchParams(document.location.search);
-const content = params.get("content")
-const post = document.querySelector("main")
+const content = params.get("content");
 
-if (content === null) window.location.replace("./")
+if (content === null) window.location.replace("./");
 
-async function gethtml() {
-    const res = await fetch(
-        `https://api.github.com/repos/angelou6/portfolio/contents/${content}?ref=main`,
-        {
-            headers: {
-                "Accept": "application/vnd.github.html+json"
-            }
-        }
-    )
-    const html = await res.text()
-    return html
-}
-
+const post = document.querySelector(".container");
+const goBackLink = document.querySelector(".gobackreader");
+const postMovement = new MoveElement(post);
 
 (async () => {
-    const html = await gethtml()
-    const button = document.createElement("a")
-    button.innerText = "Go back"
-    button.href = "./"
-    post.innerHTML += html
-    const htmlElement = document.getElementById("file")
-    htmlElement.prepend(button);
-
-    htmlElement.style.transform = "translateY(-100vh)"
-    const postMovement = new MoveElement(htmlElement);
-    button.onclick = (e) => goBack(e, postMovement);
-
-    postMovement.moveCenter(1600);
+    const html = await gethtml(content)
+    post.insertAdjacentHTML('beforeend', html)
 })();
 
-async function goBack(e, movement) {
-    e.preventDefault()
-    await movement.resetPosition(500)
-    window.location.assign(e.target.href)
-}
+goBackLink.onclick = (e) => { goBack(e, postMovement) }
+
+document.addEventListener("DOMContentLoaded", () => postMovement.moveCenter(1600))
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    postMovement.moveCenter();
+  }
+});

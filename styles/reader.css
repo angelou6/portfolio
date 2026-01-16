@@ -15,11 +15,22 @@ main {
     overflow: hidden;
 }
 
-#file {
+.container {
     width: 80%;
     height: 70%;
     overflow: scroll;
     padding: 2em;
     border: 2px solid grey;
     border-radius: 15px;
+    transform: translateY(-100vh);
+}
+
+.gobackreader:link {
+    text-decoration: none;
+    color: white;
+}
+
+.gobackreader:visited {
+    text-decoration: none;
+    color: white;
 }

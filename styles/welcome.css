@@ -83,10 +83,6 @@ main {
     text-decoration: none;
 }
 
-.posts a:active .selector a:active{
-    text-decoration: none;
-}
-
 .goback {
     cursor: pointer;
     color: white;
