@@ -1,0 +1,17 @@
+.cloud {
+    height: 5cm;
+    width: 5cm;
+    position: absolute;
+    animation-name: cloud-drift;
+    animation-duration: var(--random-time, 20s);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 30%;
+    z-index: -1;
+    user-select: none;
+}
+
+@keyframes cloud-drift {
+   from { transform: translateX(-100vw); } 
+   to { transform: translateX(100vw); } 
+}

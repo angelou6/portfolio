@@ -1,5 +1,6 @@
 import MoveElement from "../moveElement.js";
 import { populate } from "./populateData.js";
+import { addRandomClouds } from "../clouds.js";
 import { 
     clickHandle, 
     goBackSamePage, 
@@ -7,8 +8,12 @@ import {
     makeDragable 
 } from "../utils.js";
 
-const selector = document.querySelector(".selector")
-const links = document.querySelectorAll(".selector a")
+const main = document.querySelector("main");
+addRandomClouds(main);
+main.movement = new MoveElement(main);
+
+const selector = document.querySelector(".selector");
+const links = document.querySelectorAll(".selector a");
 
 const blogs = document.getElementById("blog");
 const projects = document.getElementById("projects");
@@ -23,15 +28,23 @@ const projectsButton = document.getElementById("projectsButton");
 const goBackButton = document.getElementsByClassName("goback");
 
 (async () => {
-    await populate(blogs, "https://api.github.com/repos/angelou6/portfolio/contents/blog")
-    await populate(projects, "https://api.github.com/repos/angelou6/portfolio/contents/projects")
+    await populate(
+        blogs, 
+        "https://api.github.com/repos/angelou6/portfolio/contents/blog", 
+        main.movement
+    )
+
+    await populate(
+        projects, 
+        "https://api.github.com/repos/angelou6/portfolio/contents/projects", 
+        main.movement
+    )
 })();
 
 for (const back of goBackButton) {
-    const parent = back.parentElement
     back.addEventListener("click", () => {
         goBackSamePage(
-                parent.id === "blog" ? blogs.movement : projects.movement,
+                back.parentElement.id === "blog" ? blogs.movement : projects.movement,
                 selector.movement
             )
     })
@@ -40,24 +53,24 @@ for (const back of goBackButton) {
 
 for (const link of links) {
     link.addEventListener("click", (e) => {
-        clickHandle(e, selector.movement);
+        clickHandle(e, main.movement);
     })
     link.addEventListener("mousedown", (e) => e.stopPropagation())
 }
 
-blogButton.addEventListener("click", () => openWithAnimation(blogs.movement, selector.movement))
-blogButton.addEventListener("mousedown", (e) => e.stopPropagation())
+blogButton.addEventListener("click", () => openWithAnimation(blogs.movement, selector.movement));
+blogButton.addEventListener("mousedown", (e) => e.stopPropagation());
 
-projectsButton.addEventListener("click", () => openWithAnimation(projects.movement, selector.movement))
-projectsButton.addEventListener("mousedown", (e) => e.stopPropagation())
+projectsButton.addEventListener("click", () => openWithAnimation(projects.movement, selector.movement));
+projectsButton.addEventListener("mousedown", (e) => e.stopPropagation());
 
-makeDragable(selector)
-makeDragable(blogs, selector.movement)
-makeDragable(projects, selector.movement)
+makeDragable(selector);
+makeDragable(blogs, selector.movement);
+makeDragable(projects, selector.movement);
 
-document.addEventListener("DOMContentLoaded", () => selector.movement.moveCenter())
+document.addEventListener("DOMContentLoaded", () => main.movement.moveCenter())
 window.addEventListener("pageshow", (event) => {
     if (event.persisted) {
-        selector.movement.moveCenter();
+        main.movement.moveCenter();
     }
 });

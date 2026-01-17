@@ -3,7 +3,7 @@ body {
     margin: 0;
     color: white;
     overflow: hidden;
-    background-color: black;
+    background-color: #52b6e7;
 }
 
 main {
@@ -13,6 +13,7 @@ main {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    transform: translateY(-100vh);
 }
 
 .container {
@@ -20,14 +21,27 @@ main {
     height: 70%;
     overflow: scroll;
     padding: 2em;
-    border: 2px solid grey;
+    background-color: rgba(255, 255, 255, 0.161);
+    backdrop-filter: blur(10px);
     border-radius: 15px;
-    transform: translateY(-100vh);
 }
 
 .gobackreader:link {
+    cursor: pointer;
     text-decoration: none;
-    color: white;
+    border: none;
+    width: 10%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: all 100ms ease-in-out;
+    background-color: rgba(255, 255, 255, 0.161);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+.gobackreader:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.238);
 }
 
 .gobackreader:visited {

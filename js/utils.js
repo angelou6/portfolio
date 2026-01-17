@@ -77,6 +77,7 @@ export function makeDragable(element, seccondMovement = undefined, redirect = un
     }
 
     const handleMove = (e) => {
+        element.style.cursor = "grabbing"
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         const deltaX = clientX - startX;
@@ -100,12 +101,19 @@ export function makeDragable(element, seccondMovement = undefined, redirect = un
     const handleStop = async (e) => {
         const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
         const clientY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+        element.style.cursor = ""
 
-        const seccondMovementOrRedirect = () => {
-            if (seccondMovement) {
+        const seccondMovementOrRedirect = async () => {
+            if (seccondMovement && redirect) {
+                await seccondMovement.moveDown()
+                location.assign(redirect)
+                return
+            } else if (seccondMovement) {
                 seccondMovement.moveCenter()
+                return
             } else if (redirect) {
                 location.assign(redirect)
+                return
             }
         }
 
@@ -117,16 +125,16 @@ export function makeDragable(element, seccondMovement = undefined, redirect = un
 
                 if (direction === "up") {
                     await element.movement.moveUp()
-                    seccondMovementOrRedirect()
+                    await seccondMovementOrRedirect()
                 } else if (direction === "down") {
                     await element.movement.moveDown()
-                    seccondMovementOrRedirect()
+                    await seccondMovementOrRedirect()
                 } else if (direction === "left") {
                     await element.movement.moveLeft()
-                    seccondMovementOrRedirect()
+                    await seccondMovementOrRedirect()
                 } else if (direction === "right") {
                     await element.movement.moveRight()
-                    seccondMovementOrRedirect()
+                    await seccondMovementOrRedirect()
                 } else {
                     element.movement.moveCenter()
                 }
