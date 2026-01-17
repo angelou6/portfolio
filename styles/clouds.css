@@ -6,7 +6,6 @@
     animation-duration: var(--random-time, 20s);
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    opacity: 30%;
     z-index: -1;
     user-select: none;
 }

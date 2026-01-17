@@ -13,34 +13,45 @@ main {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    font-family: serif;
 }
 
 .selector {
     position: absolute;
     display: flex;
+    justify-content: space-between;
+    width: 30vw;
     cursor: grab;
     align-items: center;
     user-select: none;
 }
 
 .selector h1 {
-    font-size: clamp(4rem, 4vh, 10rem);
-}
-
-.selector h1::after {
-    content: "";
-    display: block;
-    height: 100%;
-    width: 3px;
-    background: white;
-    position: absolute;
-    left: 60%;
-    top: -5%;
+    font-size: 4rem;
 }
 
 .selector ul {
-    font-size: clamp(2rem, 2vh, 6rem);
+    padding: 0;
+    font-size: 2rem;
     list-style-type: none;
+}
+
+@media (max-width: 1000px) {
+    .selector {
+        width: 80vw;
+    }
+    .selector h1 {
+        font-size: 6rem;
+    }
+    .selector ul {
+        font-size: 4rem;
+    }
+}
+
+.divider {
+    height: 15rem;
+    width: 3px;
+    background: white;
 }
 
 .selector li {
@@ -84,34 +95,38 @@ main {
     overflow-y: scroll;
     overflow-x: hidden;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.161);
+    background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.238);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+    font-family: sans-serif;
 }
 
 .posts a {
+    font-weight: bold;
     padding: 10px;
     margin-bottom: 10px;
     color: black;
     font-size: clamp(1rem, 2vh, 6rem);
     border-radius: 15px;
     transition: all 200ms ease-in;
-    background-color: rgba(255, 255, 255, 0.138);
-    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.238);
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.3);
     text-align: start;
     padding-left: 1em;
 }
 
 .posts a:hover {
-    background-color: rgba(255, 255, 255, 0.238);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-.posts a:link, .selector a:link {
+.posts a:link,
+.selector a:link {
     text-decoration: none;
 }
 
-.posts a:visited, .selector a:visited {
+.posts a:visited,
+.selector a:visited {
     text-decoration: none;
 }
 
@@ -129,14 +144,14 @@ main {
     font-size: clamp(1rem, 1vh, 6rem);
     width: auto;
     transition: all 100ms ease-in-out;
-    background-color: rgba(255, 255, 255, 0.161);
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 15px;
 }
 
 .goback:hover {
     transform: translateY(-0.2ex);
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .side-left {

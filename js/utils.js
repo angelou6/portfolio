@@ -9,6 +9,11 @@ export async function gethtml(content) {
             }
         }
     )
+
+    if (!res.ok) {
+        throw new Error("Could not get File");
+    }
+
     const html = await res.text()
     return html
 }
