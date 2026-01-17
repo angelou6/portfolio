@@ -11,7 +11,7 @@ const content = params.get("content");
 
 if (content === null) window.location.replace("./");
 
-const goBackLink = document.querySelector(".gobackreader");
+const goBackLink = document.querySelector(".goback");
 const post = document.querySelector(".container");
 post.movement = new MoveElement(post);
 

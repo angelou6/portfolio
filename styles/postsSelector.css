@@ -1,0 +1,78 @@
+.posts {
+    position: absolute;
+    width: 80vw;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+    font-family: sans-serif;
+}
+
+.posts a {
+    padding: 10px;
+    margin-bottom: 10px;
+    color: black;
+    font-size: 1rem;
+    border-radius: 15px;
+    transition: all 200ms ease-in;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.3);
+    text-align: start;
+    padding-left: 1em;
+}
+
+.posts a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.posts a:link,
+.selector a:link {
+    text-decoration: none;
+}
+
+.posts a:visited,
+.selector a:visited {
+    text-decoration: none;
+}
+
+.posts a:hover {
+    text-decoration: none;
+}
+
+.goback {
+    cursor: pointer;
+    border: none;
+    width: 10%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    width: auto;
+    transition: all 100ms ease-in-out;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+.goback:hover {
+    transform: translateY(-0.2ex);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 1000px) {
+    .posts a {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 2.7rem;
+    }
+    .goback {
+        font-size: 3rem;
+    }
+}
