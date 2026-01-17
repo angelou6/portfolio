@@ -1,26 +1,27 @@
 export function addRandomClouds(container, cloudAmount = 30) {
+    const fragment = document.createDocumentFragment();
+    const baseCloud = document.createElement("img");
+    baseCloud.src = `./public/assets/cloud.png`;
+    baseCloud.className = "cloud";
+
     for (let i = 0; i < cloudAmount; i++) {
-        const cloud = document.createElement("img");
+        const cloud = baseCloud.cloneNode(true);
 
-        cloud.src = `./public/assets/cloud.png`;
-        cloud.classList.add("cloud");
-        
-        const randomWidth = Math.floor(Math.random() * 7 + 5); 
-        cloud.style.width = `${randomWidth}cm`
-
-
-        const randomDuration = Math.floor(Math.random() * 70 + 50); 
-        cloud.style.setProperty('--random-time', `${randomDuration}s`)
-
-        const randomY = Math.floor(Math.random() * 75); 
-        cloud.style.top = `${randomY}%`
-
-        const randomX = Math.floor(Math.random() * 90); 
-        cloud.style.left = `${randomX}%`
-
+        const randomWidth = Math.floor(Math.random() * 7 + 5);
+        const randomDuration = Math.floor(Math.random() * 70 + 50);
+        const randomY = Math.floor(Math.random() * 75);
+        const randomX = Math.floor(Math.random() * 90);
         const randomDelay = Math.random() * randomDuration;
-        cloud.style.animationDelay = `-${randomDelay}s`;
 
-        container.appendChild(cloud);
+        cloud.style.cssText = `
+            width: ${randomWidth}cm;
+            top: ${randomY}%;
+            left: ${randomX}%;
+            animation-delay: -${randomDelay}s;
+            --random-time: ${randomDuration}s;
+        `;
+
+        fragment.appendChild(cloud);
     }
+    container.appendChild(fragment);
 }
