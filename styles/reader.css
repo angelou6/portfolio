@@ -21,19 +21,23 @@ main {
     height: 70%;
     overflow: scroll;
     padding: 2em;
+    font-size: clamp(1rem, 1vh, 6rem);
     background-color: rgba(255, 255, 255, 0.161);
     backdrop-filter: blur(10px);
     border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.238);
 }
 
-.gobackreader:link {
+.gobackreader {
     cursor: pointer;
     text-decoration: none;
+    width: auto;
     border: none;
     width: 10%;
     padding: 10px;
     margin-bottom: 10px;
     font-weight: bold;
+    font-size: clamp(1rem, 1.5vh, 6rem);
     transition: all 100ms ease-in-out;
     background-color: rgba(255, 255, 255, 0.161);
     backdrop-filter: blur(10px);
@@ -41,7 +45,7 @@ main {
 }
 
 .gobackreader:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.238);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.238);
 }
 
 .gobackreader:visited {

@@ -18,8 +18,9 @@ post.movement = new MoveElement(post);
 makeDragable(post, main.movement, "./");
 
 (async () => {
-    const html = await gethtml(content)
-    post.insertAdjacentHTML('beforeend', html)
+  const html = await gethtml(content)
+  let cleanHtml = html.replace(/<a[^>]*class="anchor"[^>]*>.*?<\/a>/gi, '<hr>');
+  post.insertAdjacentHTML('beforeend', cleanHtml)
 })();
 
 goBackLink.addEventListener("click", (e) => {

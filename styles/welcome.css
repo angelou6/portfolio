@@ -18,39 +18,56 @@ main {
 .selector {
     position: absolute;
     display: flex;
-    align-items: center;
     cursor: grab;
+    align-items: center;
     user-select: none;
 }
 
 .selector h1 {
-    font-size: 2em;
+    font-size: clamp(4rem, 4vh, 10rem);
 }
 
 .selector h1::after {
     content: "";
     display: block;
     height: 100%;
-    width: 2px;
+    width: 3px;
     background: white;
     position: absolute;
-    left: 55%;
+    left: 60%;
     top: -5%;
 }
 
 .selector ul {
+    font-size: clamp(2rem, 2vh, 6rem);
     list-style-type: none;
 }
 
-.selector a, .selector li {
-    font-size: large;
+.selector li {
+    position: relative;
     cursor: pointer;
     margin-bottom: 10px;
     transition: all 100ms ease-in-out;
 }
 
-.selector a:hover, .selector li:hover {
-    transform: scale(1.5, 1.5);
+.selector li:hover {
+    transform: translateX(8px);
+}
+
+.selector li::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0);
+    background: white;
+    transform-origin: left;
+    transition: transform 100ms ease;
+}
+
+.selector li:hover::before {
+    transform: scaleX(1);
 }
 
 .selector a {
@@ -77,12 +94,13 @@ main {
     padding: 10px;
     margin-bottom: 10px;
     color: black;
+    font-size: clamp(1rem, 2vh, 6rem);
     border-radius: 15px;
     transition: all 200ms ease-in;
     background-color: rgba(255, 255, 255, 0.138);
     box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.238);
     text-align: start;
-    padding-left: 2em;
+    padding-left: 1em;
 }
 
 .posts a:hover {
@@ -108,6 +126,8 @@ main {
     padding: 10px;
     margin-bottom: 10px;
     font-weight: bold;
+    font-size: clamp(1rem, 1vh, 6rem);
+    width: auto;
     transition: all 100ms ease-in-out;
     background-color: rgba(255, 255, 255, 0.161);
     backdrop-filter: blur(10px);
@@ -116,7 +136,7 @@ main {
 
 .goback:hover {
     transform: translateY(-0.2ex);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.238);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.08);
 }
 
 .side-left {
